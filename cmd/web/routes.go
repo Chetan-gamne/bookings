@@ -3,8 +3,8 @@ package main
 import (
 	"net/http"
 
-	"github.com/Chetan-gamne/bookings/pkg/config"
-	"github.com/Chetan-gamne/bookings/pkg/handlers"
+	"github.com/Chetan-gamne/bookings/internal/config"
+	"github.com/Chetan-gamne/bookings/internal/handlers"
 	"github.com/go-chi/chi/v5"
 	"github.com/go-chi/chi/v5/middleware"
 )

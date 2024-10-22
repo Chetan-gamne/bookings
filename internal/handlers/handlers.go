@@ -6,9 +6,9 @@ import (
 	"log"
 	"net/http"
 
-	"github.com/Chetan-gamne/bookings/pkg/config"
-	"github.com/Chetan-gamne/bookings/pkg/models"
-	"github.com/Chetan-gamne/bookings/pkg/render"
+	"github.com/Chetan-gamne/bookings/internal/config"
+	"github.com/Chetan-gamne/bookings/internal/models"
+	"github.com/Chetan-gamne/bookings/internal/render"
 )
 
 // Repo the repository used by the handlers

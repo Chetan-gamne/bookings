@@ -6,9 +6,9 @@ import (
 	"net/http"
 	"time"
 
-	"github.com/Chetan-gamne/bookings/pkg/config"
-	"github.com/Chetan-gamne/bookings/pkg/handlers"
-	"github.com/Chetan-gamne/bookings/pkg/render"
+	"github.com/Chetan-gamne/bookings/internal/config"
+	"github.com/Chetan-gamne/bookings/internal/handlers"
+	"github.com/Chetan-gamne/bookings/internal/render"
 	"github.com/alexedwards/scs/v2"
 )
 
