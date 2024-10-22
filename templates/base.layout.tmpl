@@ -215,6 +215,18 @@
             }
         }
 
+        {{with .Error}}
+        notify("{{.}}","error")
+        {{end}}
+
+        {{with .Flash}}
+        notify("{{.}}","success")
+        {{end}}
+
+        {{with .Warning}}
+        notify("{{.}}","Warning")
+        {{end}}
+
     </script>
 </body>
 

@@ -6,30 +6,48 @@
         <div class="row">
             <div class="col">
                 <h1>Make Reservation</h1>
+                <p><strong>Reservation Details</strong></p>
 
-                <form method="post" action="" class="needs-validation" novalidate>
+
+                {{$res := index .Data "reservation"}}
+                <form method="post" action="/make-reservation" class="" novalidate>
+                    <input type="hidden" name="csrf_token" value="{{.CSRFToken}}"> 
+
+                    
                     <div class="mb-3">
                         <label for="start_date" class="form-label">First Name:</label>
-                        <input type="text" class="form-control" id="start_date" name="start_date"
-                            aria-describedby="startDateHelp" required>
+                        {{with .Form.Errors.Get "first_name"}}
+                            <label class="text-danger">{{.}}</label>
+                        {{end}}
+                        <input type="text" class="form-control {{with .Form.Errors.Get "first_name"}} is-invalid {{end}}" id="start_date" name="first_name"
+                            aria-describedby="startDateHelp" value="{{$res.FirstName}}" required>
                     </div>
 
                     <div class="mb-3">
                         <label for="start_date" class="form-label">Last Name:</label>
-                        <input type="text" class="form-control" id="start_date" name="start_date"
-                            aria-describedby="startDateHelp" required>
+                        {{with .Form.Errors.Get "last_name"}}
+                            <label class="text-danger">{{.}}</label>
+                        {{end}}
+                        <input type="text" class="form-control {{with .Form.Errors.Get "last_name"}} is-invalid {{end}}" id="start_date" name="last_name"
+                            aria-describedby="startDateHelp" value="{{$res.LastName}}" required>
                     </div>
 
                     <div class="mb-3">
                         <label for="start_date" class="form-label">Email:</label>
-                        <input type="email" class="form-control" id="start_date" name="start_date"
-                            aria-describedby="startDateHelp" required>
+                        {{with .Form.Errors.Get "email"}}
+                            <label class="text-danger">{{.}}</label>
+                        {{end}}
+                        <input type="email" class="form-control {{with .Form.Errors.Get "email"}} is-invalid {{end}}" id="start_date" name="email"
+                            aria-describedby="startDateHelp" value="{{$res.Email}}" required>
                     </div>
 
                     <div class="mb-3">
                         <label for="start_date" class="form-label">Phone Number:</label>
-                        <input type="number" class="form-control" id="start_date" name="start_date"
-                            aria-describedby="startDateHelp" required>
+                        {{with .Form.Errors.Get "phone"}}
+                            <label class="text-danger">{{.}}</label>
+                        {{end}}
+                        <input type="number" class="form-control {{with .Form.Errors.Get "phone"}} is-invalid {{end}}" id="start_date" name="phone"
+                            aria-describedby="startDateHelp" value="{{$res.Phone}}" required>
                     </div>
 
                     <button type="submit" class="btn btn-primary">Make Reservation</button>
