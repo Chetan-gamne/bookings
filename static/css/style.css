@@ -1,0 +1,107 @@
+body {
+  font-family: "Arial", sans-serif;
+  background-color: #f8f9fa;
+}
+
+/* Navbar */
+.navbar {
+  background-color: #004080;
+}
+
+.navbar-brand {
+  color: #fff !important;
+}
+
+.nav-link {
+  color: #ddd !important;
+}
+
+.nav-link:hover {
+  color: #fff !important;
+}
+
+.navbar-toggler {
+  border-color: #ddd;
+}
+
+/* Carousel */
+.carousel-item img {
+  filter: brightness(80%);
+}
+
+.carousel-caption h5 {
+  background-color: rgba(0, 64, 128, 0.7);
+  padding: 0.5em;
+  border-radius: 5px;
+  color: #fff;
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  filter: invert(100%);
+}
+
+/* Welcome Section */
+h1 {
+  font-size: 2.5rem;
+  color: #004080;
+}
+
+p {
+  font-size: 1.1rem;
+  color: #333;
+}
+
+/* Call to Action */
+.btn-success {
+  background-color: #28a745;
+  border: none;
+  font-size: 1.2rem;
+  padding: 10px 20px;
+  border-radius: 30px;
+}
+
+.btn-success:hover {
+  background-color: #218838;
+}
+
+/* Footer */
+.my-footer {
+  background-color: #004080;
+  color: #fff;
+  padding: 1em 0;
+  font-size: 0.9rem;
+  text-align: center;
+}
+
+.my-footer .col {
+  margin: 0.5em 0;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  h1 {
+    font-size: 2rem;
+  }
+
+  .carousel-caption h5 {
+    font-size: 1.5rem;
+  }
+
+  .carousel-caption p {
+    font-size: 1rem;
+  }
+
+  .btn-success {
+    font-size: 1rem;
+    padding: 8px 16px;
+  }
+}
+
+.datepicker {
+  z-index: 2;
+}
+
+.swal2-actions {
+  z-index: 0;
+}

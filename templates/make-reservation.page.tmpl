@@ -1,0 +1,42 @@
+{{template "base" .}}
+
+{{define "content"}}
+    <!-- Main Content -->
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <h1>Make Reservation</h1>
+
+                <form method="post" action="" class="needs-validation" novalidate>
+                    <div class="mb-3">
+                        <label for="start_date" class="form-label">First Name:</label>
+                        <input type="text" class="form-control" id="start_date" name="start_date"
+                            aria-describedby="startDateHelp" required>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="start_date" class="form-label">Last Name:</label>
+                        <input type="text" class="form-control" id="start_date" name="start_date"
+                            aria-describedby="startDateHelp" required>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="start_date" class="form-label">Email:</label>
+                        <input type="email" class="form-control" id="start_date" name="start_date"
+                            aria-describedby="startDateHelp" required>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="start_date" class="form-label">Phone Number:</label>
+                        <input type="number" class="form-control" id="start_date" name="start_date"
+                            aria-describedby="startDateHelp" required>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary">Make Reservation</button>
+
+                </form>
+
+            </div>
+        </div>
+    </div>
+{{end}}
