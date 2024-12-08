@@ -1,0 +1,8 @@
+development:
+  url: <%= ENV['DATABASE_URL_DEVELOPMENT'] || "postgres://username:password@127.0.0.1:5432/development_db?sslmode=disable" %>
+
+test:
+  url: <%= ENV['DATABASE_URL_TEST'] || "postgres://username:password@127.0.0.1:5432/test_db?sslmode=disable" %>
+
+production:
+  url: <%= ENV['DATABASE_URL_PRODUCTION'] || "postgres://username:password@127.0.0.1:5432/production_db?sslmode=disable" %>

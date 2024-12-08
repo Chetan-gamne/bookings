@@ -14,7 +14,7 @@ import (
 
 var app *config.AppConfig
 
-func NewTemplates(a *config.AppConfig) {
+func NewRenderer(a *config.AppConfig) {
 	app = a
 }
 
@@ -28,7 +28,7 @@ func AddDefaultData(td *models.TemplateData,r *http.Request) *models.TemplateDat
 }
 
 // RenderTemplate renders templates using html/template
-func RenderTemplate(w http.ResponseWriter, r *http.Request,tmpl string,td *models.TemplateData) {
+func Template(w http.ResponseWriter, r *http.Request,tmpl string,td *models.TemplateData) {
 	// Create a Template Cache
 	// get the Template Cache From the app Config
 	var tc map[string]*template.Template

@@ -58,6 +58,7 @@
                     const rp = new DateRangePicker(elem, {
                         format: "yyyy-mm-dd",
                         showOnFoucs: true,
+                        minDate: new Date(),
                     })
                 },
                 didOpen: () => {
@@ -70,6 +71,7 @@
                     let form = document.getElementById("check-availability-form");
                     let formData = new FormData(form);
                     formData.append("csrf_token","{{.CSRFToken}}");
+                    formData.append("room_id","1");
 
                     fetch('/search-availability-json',{
                         method:"post",
@@ -77,9 +79,25 @@
                     })
                         .then(response => response.json())
                         .then(data => {
-                            console.log(data);
-                            console.log(data.ok);
-                            console.log(data.message);
+                            if (data.ok) {
+                                attention.custom({
+                                    icon: "success",
+                                    showConfirmButton: false,
+                                    msg: '<p>Room is available!</p>'
+                                        + '<p><a href="/book-room?id='
+                                        + data.room_id
+                                        + '&s='
+                                        + data.start_date
+                                        + '&e='
+                                        + data.end_date
+                                        + '" class="btn btn-primary">'
+                                        + 'Book Now!</a></p>',
+                                })
+                            } else {
+                                attention.error({
+                                    msg:"No Availability"
+                                })
+                            }
                         })
                 }
             });

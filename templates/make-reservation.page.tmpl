@@ -5,14 +5,22 @@
     <div class="container">
         <div class="row">
             <div class="col">
-                <h1>Make Reservation</h1>
-                <p><strong>Reservation Details</strong></p>
-
-
                 {{$res := index .Data "reservation"}}
+
+                <h1>Make Reservation</h1>
+                <p><strong>Reservation Details</strong><br>
+                Room: {{$res.Room.RoomName}}<br>
+                Arrival : {{index .StringMap "start_date"}}<br>
+                Departure : {{index .StringMap "end_date"}}                
+                </p>
+
+
+                
                 <form method="post" action="/make-reservation" class="" novalidate>
                     <input type="hidden" name="csrf_token" value="{{.CSRFToken}}"> 
-
+                    <input type="hidden" name="start_date" value="{{index .StringMap "start_date"}}"> 
+                    <input type="hidden" name="end_date" value="{{index .StringMap "end_date"}}"> 
+                    <input type="hidden" name="room_id" value="{{$res.RoomID}}" />
                     
                     <div class="mb-3">
                         <label for="start_date" class="form-label">First Name:</label>
@@ -31,6 +39,8 @@
                         <input type="text" class="form-control {{with .Form.Errors.Get "last_name"}} is-invalid {{end}}" id="start_date" name="last_name"
                             aria-describedby="startDateHelp" value="{{$res.LastName}}" required>
                     </div>
+
+                    
 
                     <div class="mb-3">
                         <label for="start_date" class="form-label">Email:</label>
