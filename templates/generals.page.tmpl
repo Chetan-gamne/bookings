@@ -1,38 +1,35 @@
 {{template "base" .}}
 
 {{define "content"}}
-        <!-- Main Content -->
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 mx-auto">
-                <img src="/static/images/generals-quarters.png" alt="generarls quarter" class="img-fluid img-thumbnail">
-            </div>
-        </div>
-        <div class="row">
-            <div class="col text-center">
-                <h1>General's Quarters</h1>
-                <p>
-                    Your Home Away from home, set on the majestic waters of the Atlantic Ocean.
-                    This will be a vacation to remember, filled with breathtaking views and unforgettable moments.
-                </p>
-            </div>
-        </div>
-
-        <div class="row mt-4 text-center">
-            <div class="col">
-                <a id="check-availability-button" href="#!" class="btn btn-success">Make Reservation Now</a>
-            </div>
+<!-- Main Content -->
+<div class="container">
+    <div class="row">
+        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 mx-auto">
+            <img src="/static/images/generals-quarters.png" alt="generarls quarter" class="img-fluid img-thumbnail">
         </div>
     </div>
+    <div class="row">
+        <div class="col text-center">
+            <h1>General's Quarters</h1>
+            <p>
+                Your Home Away from home, set on the majestic waters of the Atlantic Ocean.
+                This will be a vacation to remember, filled with breathtaking views and unforgettable moments.
+            </p>
+        </div>
+    </div>
+
+    <div class="row mt-4 text-center">
+        <div class="col">
+            <a id="check-availability-button" href="#!" class="btn btn-success">Make Reservation Now</a>
+        </div>
+    </div>
+</div>
 
 {{end}}
 
 {{define "js"}}
     <script>
-        
-        let colButton = document.getElementById("check-availability-button");
-        colButton.addEventListener("click", function () {
-            // notify("This is My Message", "warning");
+        document.getElementById("check-availability-button").addEventListener("click", function () {
             let html = `
                 <form id="check-availability-form" action="" method="post" novalidate class="needs-validation">
                     <div class="row">
@@ -49,39 +46,42 @@
                     </div>
                 </form>
             `
-            attention.custom({ 
+            attention.custom({
                 msg: html,
-                title: "Choose Your Dates",
+                title: "Choose your dates",
 
                 willOpen: () => {
-                    const elem = document.getElementById("reservation-dates-modal");
+                    const elem = document.getElementById('reservation-dates-modal');
                     const rp = new DateRangePicker(elem, {
-                        format: "yyyy-mm-dd",
-                        showOnFoucs: true,
+                        format: 'yyyy-mm-dd',
+                        showOnFocus: true,
                         minDate: new Date(),
                     })
                 },
+
                 didOpen: () => {
-                    document.getElementById("start").removeAttribute("disabled")
-                    document.getElementById("end").removeAttribute("disabled")
+                    document.getElementById('start').removeAttribute('disabled');
+                    document.getElementById('end').removeAttribute('disabled');
+
                 },
-                Callback: function(result) {
+
+                callback: function (result) {
                     console.log("called");
 
                     let form = document.getElementById("check-availability-form");
                     let formData = new FormData(form);
-                    formData.append("csrf_token","{{.CSRFToken}}");
-                    formData.append("room_id","1");
+                    formData.append("csrf_token", "{{.CSRFToken}}");
+                    formData.append("room_id", "1");
 
-                    fetch('/search-availability-json',{
-                        method:"post",
+                    fetch('/search-availability-json', {
+                        method: "post",
                         body: formData,
                     })
                         .then(response => response.json())
                         .then(data => {
                             if (data.ok) {
                                 attention.custom({
-                                    icon: "success",
+                                    icon: 'success',
                                     showConfirmButton: false,
                                     msg: '<p>Room is available!</p>'
                                         + '<p><a href="/book-room?id='
@@ -91,17 +91,16 @@
                                         + '&e='
                                         + data.end_date
                                         + '" class="btn btn-primary">'
-                                        + 'Book Now!</a></p>',
+                                        + 'Book now!</a></p>',
                                 })
                             } else {
                                 attention.error({
-                                    msg:"No Availability"
+                                    msg: "No availability",
                                 })
                             }
                         })
                 }
             });
         })
-
     </script>
 {{end}}

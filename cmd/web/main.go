@@ -30,6 +30,10 @@ func main() {
 		log.Fatal(err)
 	}
 	defer db.SQL.Close()
+	defer close(app.MailChan)
+
+	fmt.Println("Started Mail Listener")
+	listenForMail()
 
 	fmt.Println(fmt.Sprintf("Starting application on port %s",portNumber));
 
@@ -49,7 +53,10 @@ func run () (*driver.DB , error) {
 	gob.Register(models.User{})
 	gob.Register(models.Room{})
 	gob.Register(models.Restriction{})
+	gob.Register(map[string]int{})
 
+	mailChan := make(chan models.MailData)
+	app.MailChan = mailChan
 
 	// change this value to True in Production
 	app.InProduction = false
