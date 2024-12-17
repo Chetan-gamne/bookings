@@ -37,7 +37,8 @@ func routes(app *config.AppConfig) http.Handler {
 	mux.Post("/user/login",handlers.Repo.PostShowLogin)
 	mux.Get("/user/logout",handlers.Repo.Logout)
 
-	fileServer := http.FileServer(http.Dir("../../static/"))
+	// fileServer := http.FileServer(http.Dir("../../static/"))
+	fileServer := http.FileServer(http.Dir("static/"))
 	mux.Handle("/static/*",http.StripPrefix("/static",fileServer))
 
 	mux.Route("/admin",func(mux chi.Router){
